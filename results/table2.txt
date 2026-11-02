@@ -1,0 +1,8 @@
+OK   {'query': 'black freestanding tub  with faucet', 'attribute': 'color=black', 'title': "70 '' x 32 '' freestanding soaking fiberglass bathtub with faucet", 'field': '', 'extracted': True, 'top_relevance_removed': True, 'ok': True}
+OK   {'query': 'white desk', 'attribute': 'color=white', 'title': 'SHW Home Office 48-Inch Computer Desk, White/Oak', 'field': 'Oak', 'extracted': True, 'top_relevance_removed': True, 'ok': True}
+OK   {'query': 'master spa inner filters for hot tubs', 'attribute': 'brand=master spa', 'title': 'Ketofa PWW50 Filter for Compatible with Pleatco Spa Hot Tub Filter, PWW50P3 Spa Filter Compatible with Unicel 6CH-940 Filbur FC-0359 Waterways 817-0050 Front Access Skimmer Aber Hot Tubs(2 Pack)', 'field': 'Ketofa', 'extracted': True, 'top_relevance_removed': True, 'ok': True}
+OK   {'query': '7 draw white dresser', 'attribute': 'color=white', 'title': 'anyrie 7 drawer dresser', 'field': 'black', 'extracted': True, 'top_relevance_removed': True, 'ok': True}
+OK   {'query': 'black freestanding tub  with faucet', 'attribute': 'shape=with faucet', 'title': "70 '' x 32 '' freestanding soaking fiberglass bathtub with faucet", 'field': 'rectangular', 'extracted': True, 'top_relevance_removed': True, 'ok': True}
+wd example: [('wd gold', 'ウエスタンデジタル(Western Digital)')]
+spa filter title names 'master': False
+wrote results/table2.json

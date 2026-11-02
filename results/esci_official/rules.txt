@@ -1,0 +1,5 @@
+cut 0.4: 34/38 correct (18/22 where a field exists), lenient out 34/38; misses [['qwen3b_lora', 'wands', 'color', 0.4284, 0.1651], ['qwen72', 'wands', 'color', 0.4972, 0.162], ['qwen3b_base', 'wands', 'color', 0.5062, 0.1609], ['qwen3b_base', 'wands', 'material', 0.5258, 0.4948]]
+cut 0.5: 36/38 correct (20/22 where a field exists), lenient out 36/38; misses [['qwen3b_base', 'wands', 'color', 0.5062, 0.1609], ['qwen3b_base', 'wands', 'material', 0.5258, 0.4948]]
+cut 0.6: 38/38 correct (22/22 where a field exists), lenient out 38/38; misses []
+{'n_cells': 38, 'n_field': 22, 'n_nofield': 16, 'spearman_all': 0.9803759309611063, 'spearman_field': 0.9062676453980804, 'spearman_field_inputs_rounded_2dp': 0.9062877154580297, 'spearman_field_esci': 0.6571428571428573, 'n_field_esci': 6, 'spearman_field_wands': 0.8176470588235294, 'n_field_wands': 16}
+wrote results/esci_official/rules.json

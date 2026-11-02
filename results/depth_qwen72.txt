@@ -1,0 +1,22 @@
+
+[esci] label-free safety per type: {'brand': 0.81, 'color': 0.66, 'size': 0.0, 'material': 0.0, 'style': 0.0, 'pattern': 0.0, 'shape': 0.0}
+
+== esci (base=hybrid, n=678 queries); nDCG@10 mean [95% bootstrap CI]; paired diff vs ignore [CI], p (paired sign-flip)
+  ignore                                    83.23 [ 81.80, 84.71]   diff   +0.00 [  +0.00,  +0.00]  p=1.0000
+  hard filter                               19.87 [ 17.33, 22.55]   diff  -63.36 [ -66.27, -60.49]  p=0.0005
+  hard filter + title fallback (repair)     58.65 [ 55.97, 61.43]   diff  -24.59 [ -27.06, -22.27]  p=0.0005
+  fixed-order relaxation                    83.25 [ 81.68, 84.74]   diff   +0.02 [  -0.25,  +0.27]  p=0.9055
+  safety-gated hard filter (safety>=0.5)    69.62 [ 67.19, 72.16]   diff  -13.62 [ -15.87, -11.35]  p=0.0005
+  safety-gated + title fallback             76.10 [ 73.88, 78.27]   diff   -7.13 [  -8.77,  -5.64]  p=0.0005
+  oracle subset of hard filters             84.19 [ 82.77, 85.58]   diff   +0.96 [  +0.65,  +1.31]  p=0.0005
+
+[wands] label-free safety per type: {'material': 0.65, 'color': 0.5, 'shape': 0.29, 'pattern': 0.15, 'style': 0.12, 'size': 0.1, 'brand': 0.0}
+
+== wands (base=hybrid, n=123 queries); nDCG@10 mean [95% bootstrap CI]; paired diff vs ignore [CI], p (paired sign-flip)
+  ignore                                    68.62 [ 63.51, 73.59]   diff   +0.00 [  +0.00,  +0.00]  p=1.0000
+  hard filter                               17.11 [ 11.78, 22.91]   diff  -51.51 [ -57.54, -44.76]  p=0.0005
+  hard filter + title fallback (repair)     28.56 [ 22.74, 34.94]   diff  -40.07 [ -46.70, -33.66]  p=0.0005
+  fixed-order relaxation                    63.55 [ 57.98, 68.90]   diff   -5.07 [  -8.38,  -2.10]  p=0.0015
+  safety-gated hard filter (safety>=0.5)    60.59 [ 54.29, 66.44]   diff   -8.03 [ -12.37,  -4.34]  p=0.0005
+  safety-gated + title fallback             65.43 [ 60.26, 70.48]   diff   -3.20 [  -6.00,  -0.67]  p=0.0235
+  oracle subset of hard filters             70.11 [ 65.34, 74.74]   diff   +1.49 [  +0.56,  +2.62]  p=0.0005

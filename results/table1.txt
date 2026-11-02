@@ -1,0 +1,4 @@
+qwen3b_lora  n=993 P 0.748 R 0.714 F1 0.731 | brand:0.76 color:0.73 material:0.75 shape:0.53 size:0.75
+qwen72       n=993 P 0.785 R 0.337 F1 0.472 | brand:0.29 color:0.75 material:0.44 shape:0.09 size:0.60
+qwen3b_base  n=993 P 0.592 R 0.265 F1 0.366 | brand:0.28 color:0.69 material:0.43 shape:0.00 size:0.27
+wrote results/table1.json

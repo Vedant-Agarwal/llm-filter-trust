@@ -1,0 +1,28 @@
+rows per query: mirror 19.37, official 19.00, minimum official 8
+mirror rows found in a product_id-only join: 77461 of 77461; join rows not in mirror: 0
+official US test queries 22458, with >=8 rows 22458; same rule on official rows selects 4000 of the same 4,000
+ESCI, by extractor and ranker: mirror -> official
+qwen3b_lora|esci|hybrid  n 1699->1699 ignore 85.0->85.2 hard 30.9->30.9 drop 54.1->54.3 title 58.2->58.1% gate+title 78.9->78.9% relax +0.24->+0.20 oracle +0.92->+0.89
+qwen3b_lora|esci|bm25    n 1699->1699 ignore 83.1->83.3 hard 30.5->30.5 drop 52.6->52.8 title 59.4->59.2% gate+title 79.9->79.9% relax +0.38->+0.37 oracle +1.22->+1.18
+qwen3b_lora|esci|dense   n 1699->1699 ignore 84.7->84.9 hard 30.9->30.9 drop 53.8->53.9 title 58.5->58.4% gate+title 78.6->78.5% relax +0.12->+0.11 oracle +0.87->+0.82
+qwen72|esci|hybrid       n 678->678 ignore 83.2->83.3 hard 19.9->19.9 drop 63.4->63.4 title 61.2->61.1% gate+title 88.7->88.8% relax +0.02->+0.01 oracle +0.96->+0.94
+qwen72|esci|bm25         n 678->678 ignore 81.8->81.9 hard 19.6->19.6 drop 62.1->62.3 title 62.0->61.8% gate+title 89.4->89.4% relax +0.15->+0.16 oracle +1.19->+1.17
+qwen72|esci|dense        n 678->678 ignore 82.3->82.4 hard 19.7->19.8 drop 62.5->62.6 title 62.0->62.0% gate+title 89.1->89.1% relax +0.06->+0.06 oracle +1.03->+1.03
+qwen3b_base|esci|hybrid  n 709->709 ignore 84.7->84.8 hard 20.5->20.6 drop 64.1->64.2 title 54.2->54.1% gate+title 83.5->83.4% relax +0.07->+0.04 oracle +1.01->+0.98
+qwen3b_base|esci|bm25    n 709->709 ignore 82.8->83.0 hard 20.3->20.4 drop 62.5->62.6 title 55.1->55.0% gate+title 83.9->83.9% relax +0.20->+0.21 oracle +1.24->+1.22
+qwen3b_base|esci|dense   n 709->709 ignore 83.9->84.0 hard 20.5->20.6 drop 63.4->63.5 title 54.9->54.8% gate+title 83.8->83.8% relax +0.07->+0.07 oracle +0.92->+0.93
+grid n_runs: 18.00 -> 18.00
+grid drop_min: 44.46 -> 44.46
+grid drop_max: 64.12 -> 64.17
+grid avoid_gate_title_min: 77.95 -> 77.95
+grid avoid_gate_title_max: 97.66 -> 97.66
+grid oracle_max: 2.68 -> 2.68
+grid oracle_max_hybrid: 1.49 -> 1.49
+shared esci: {'n': 659, 'lora_drop': 58.39, 'qwen72_drop': 62.8} -> {'n': 659, 'lora_drop': 58.43, 'qwen72_drop': 62.85}
+spearman_all: 0.980 -> 0.980
+spearman_field: 0.906 -> 0.906
+spearman_field_esci: 0.657 -> 0.657
+spearman_field_wands: 0.818 -> 0.818
+rule correct at 0.4/0.5/0.6: [34, 36, 38] -> [34, 36, 38] misses at 0.5: [['qwen3b_base', 'wands', 'color', 0.5062, 0.1609], ['qwen3b_base', 'wands', 'material', 0.5258, 0.4948]]
+qwen3b_lora ESCI brand: cover 0.953->0.953 consist 0.776->0.775 safety 0.739->0.738 kept 0.553->0.553
+qwen3b_lora ESCI color: cover 0.904->0.905 consist 0.759->0.759 safety 0.686->0.686 kept 0.563->0.566

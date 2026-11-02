@@ -1,0 +1,61 @@
+install rc=0
+datasets==5.1.0
+peft==0.21.2
+tokenizers==0.23.3
+torch==2.13.0
+transformers==5.19.0
+vllm==0.32.0
+Using Python 3.12.3 environment at: /workspace/v
+accelerate==1.15.0
+compressed-tensors==0.17.0
+datasets==5.1.0
+peft==0.21.2
+tokenizers==0.23.3
+torch==2.13.0
+transformers==5.19.0
+vllm==0.32.0
+Mon Nov  2 07:41:50 UTC 2026
++ : /workspace/clone/data
++ OUT=/workspace/clone/out
++ mkdir -p /workspace/clone/out
++++ dirname gpu/run_gpu.sh
+++ cd gpu
+++ pwd
++ HERE=/workspace/clone/gpu
++ export HF_HUB_DISABLE_XET=1 ISIR_DATA
++ HF_HUB_DISABLE_XET=1
++ cd /workspace/clone/gpu
++ python -c 'import vllm, peft; print('\''vllm'\'', vllm.__version__, '\''peft'\'', peft.__version__)'
+vllm 0.32.0 peft 0.21.2
++ python queryner_prep.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/7841 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7841/7841 [00:00<00:00, 779196.29 examples/s]
+Generating test split:   0%|          | 0/993 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 993/993 [00:00<00:00, 525213.60 examples/s]
+Generating validation split:   0%|          | 0/871 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 871/871 [00:00<00:00, 424252.56 examples/s]
+train 7841 3486
+validation 871 382
+test 993 421
++ Q='/workspace/clone/data/wands_queries.jsonl /workspace/clone/data/esci_queries.jsonl /workspace/clone/data/queryner_test.jsonl'
++ python extract.py Qwen/Qwen2.5-72B-Instruct-AWQ /workspace/clone/out/extract_qwen72.jsonl /workspace/clone/data/wands_queries.jsonl /workspace/clone/data/esci_queries.jsonl /workspace/clone/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-72B-Instruct-AWQ None 5473 unparseable greedy: 0
++ python lora_train.py /workspace/clone/out/lora_qwen3b_queryner
++ grep -E 'step .*0/|^DONE|Traceback|Error'
+ep 0 step 50/490 loss 0.1506
+ep 0 step 100/490 loss 0.0937
+ep 0 step 150/490 loss 0.0951
+ep 0 step 200/490 loss 0.0548
+ep 1 step 250/490 loss 0.0588
+ep 1 step 300/490 loss 0.0481
+ep 1 step 350/490 loss 0.0653
+ep 1 step 400/490 loss 0.0229
+ep 1 step 450/490 loss 0.0347
+DONE lora /workspace/clone/out/lora_qwen3b_queryner
++ python extract.py Qwen/Qwen2.5-3B-Instruct /workspace/clone/out/extract_qwen3b_lora.jsonl --lora /workspace/clone/out/lora_qwen3b_queryner /workspace/clone/data/wands_queries.jsonl /workspace/clone/data/esci_queries.jsonl /workspace/clone/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-3B-Instruct /workspace/clone/out/lora_qwen3b_queryner 5473 unparseable greedy: 1
++ python extract.py Qwen/Qwen2.5-3B-Instruct /workspace/clone/out/extract_qwen3b_base.jsonl /workspace/clone/data/wands_queries.jsonl /workspace/clone/data/esci_queries.jsonl /workspace/clone/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-3B-Instruct None 5473 unparseable greedy: 0
+run_gpu rc=0
+Mon Nov  2 08:15:34 UTC 2026

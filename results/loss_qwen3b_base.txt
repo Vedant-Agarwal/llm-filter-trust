@@ -1,0 +1,26 @@
+
+== esci: relevant-product x attribute pairs: 13918
+  dropped: field empty                                8583   61.7%
+  kept                                                3135   22.5%
+  dropped: field disagrees                            1982   14.2%
+  dropped: wording (recoverable by soft match)         218    1.6%
+  [color    ] n=  3386 kept  50.4%  empty  11.9%  wording   4.2%  disagrees  33.5%
+  [brand    ] n=  2485 kept  57.5%  empty   5.3%  wording   3.1%  disagrees  34.1%
+  [material ] n=  2344 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+  [size     ] n=  2235 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+  [style    ] n=  2040 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+  [pattern  ] n=   838 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+  [shape    ] n=   590 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+
+== wands: relevant-product x attribute pairs: 29311
+  dropped: field disagrees                           12909   44.0%
+  dropped: field empty                               10590   36.1%
+  kept                                                5217   17.8%
+  dropped: wording (recoverable by soft match)         595    2.0%
+  [color    ] n=  7130 kept  16.1%  empty  38.1%  wording   4.6%  disagrees  41.2%
+  [material ] n=  7027 kept  49.5%  empty   1.2%  wording   2.7%  disagrees  46.6%
+  [style    ] n=  6797 kept   2.5%  empty  17.2%  wording   0.8%  disagrees  79.5%
+  [brand    ] n=  3381 kept   0.0%  empty 100.0%  wording   0.0%  disagrees   0.0%
+  [size     ] n=  2348 kept  13.8%  empty  68.2%  wording   1.0%  disagrees  17.0%
+  [shape    ] n=  2167 kept   3.3%  empty  60.1%  wording   0.0%  disagrees  36.6%
+  [pattern  ] n=   461 kept   6.5%  empty  72.0%  wording   0.0%  disagrees  21.5%

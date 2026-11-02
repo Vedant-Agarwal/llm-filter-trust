@@ -1,0 +1,51 @@
++ mkdir -p /workspace/out /workspace/data
++ cp /workspace/kit/data/esci_queries.jsonl /workspace/kit/data/wands_queries.jsonl /workspace/data/
++ export HF_HUB_DISABLE_XET=1
++ HF_HUB_DISABLE_XET=1
++ '[' -x /workspace/v/bin/python ']'
++ python3 -m venv /workspace/v
++ /workspace/v/bin/pip install -q uv
++ /workspace/v/bin/uv pip install --python /workspace/v/bin/python -q vllm peft datasets
++ tail -3
++ export PATH=/workspace/v/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ PATH=/workspace/v/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ cd /workspace/kit
++ python -c 'import vllm, peft; print('\''vllm'\'', vllm.__version__, '\''peft'\'', peft.__version__)'
+vllm 0.32.0 peft 0.21.2
++ python queryner_prep.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/7841 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7841/7841 [00:00<00:00, 541421.03 examples/s]
+Generating test split:   0%|          | 0/993 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 993/993 [00:00<00:00, 601002.00 examples/s]
+Generating validation split:   0%|          | 0/871 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 871/871 [00:00<00:00, 488596.87 examples/s]
+train 7841 3486
+validation 871 382
+test 993 421
++ python -c 'from huggingface_hub import snapshot_download as s; s('\''Qwen/Qwen2.5-72B-Instruct-AWQ'\'', allow_patterns=['\''*.json'\'','\''*.safetensors'\'','\''*.txt'\'','\''tokenizer*'\'','\''*.model'\''])'
++ python -c 'from huggingface_hub import snapshot_download as s; s('\''Qwen/Qwen2.5-3B-Instruct'\'')'
++ echo 'downloaded 72B'
+downloaded 72B
++ wait
++ Q='/workspace/data/wands_queries.jsonl /workspace/data/esci_queries.jsonl /workspace/data/queryner_test.jsonl'
++ python extract.py Qwen/Qwen2.5-72B-Instruct-AWQ /workspace/out/extract_qwen72.jsonl /workspace/data/wands_queries.jsonl /workspace/data/esci_queries.jsonl /workspace/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-72B-Instruct-AWQ None 5473 unparseable greedy: 0
++ rm -rf /root/.cache/huggingface/hub/models--Qwen--Qwen2.5-72B-Instruct-AWQ
++ python lora_train.py /workspace/out/lora_qwen3b_queryner
++ grep -E 'step .*0/|^DONE|Traceback|Error'
+ep 0 step 50/490 loss 0.1455
+ep 0 step 100/490 loss 0.0918
+ep 0 step 150/490 loss 0.0955
+ep 0 step 200/490 loss 0.0535
+ep 1 step 250/490 loss 0.0578
+ep 1 step 300/490 loss 0.0492
+ep 1 step 350/490 loss 0.0643
+ep 1 step 400/490 loss 0.0228
+ep 1 step 450/490 loss 0.0340
+DONE lora /workspace/out/lora_qwen3b_queryner
++ python extract.py Qwen/Qwen2.5-3B-Instruct /workspace/out/extract_qwen3b_lora.jsonl --lora /workspace/out/lora_qwen3b_queryner /workspace/data/wands_queries.jsonl /workspace/data/esci_queries.jsonl /workspace/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-3B-Instruct /workspace/out/lora_qwen3b_queryner 5473 unparseable greedy: 1
++ python extract.py Qwen/Qwen2.5-3B-Instruct /workspace/out/extract_qwen3b_base.jsonl /workspace/data/wands_queries.jsonl /workspace/data/esci_queries.jsonl /workspace/data/queryner_test.jsonl
++ grep -E '^DONE|Traceback|Error'
+DONE extract Qwen/Qwen2.5-3B-Instruct None 5473 unparseable greedy: 0
++ echo ALLDONE

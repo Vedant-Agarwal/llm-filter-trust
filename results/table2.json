@@ -1,0 +1,51 @@
+{
+ "rows": [
+  {
+   "query": "black freestanding tub  with faucet",
+   "attribute": "color=black",
+   "title": "70 '' x 32 '' freestanding soaking fiberglass bathtub with faucet",
+   "field": "",
+   "extracted": true,
+   "top_relevance_removed": true,
+   "ok": true
+  },
+  {
+   "query": "white desk",
+   "attribute": "color=white",
+   "title": "SHW Home Office 48-Inch Computer Desk, White/Oak",
+   "field": "Oak",
+   "extracted": true,
+   "top_relevance_removed": true,
+   "ok": true
+  },
+  {
+   "query": "master spa inner filters for hot tubs",
+   "attribute": "brand=master spa",
+   "title": "Ketofa PWW50 Filter for Compatible with Pleatco Spa Hot Tub Filter, PWW50P3 Spa Filter Compatible with Unicel 6CH-940 Filbur FC-0359 Waterways 817-0050 Front Access Skimmer Aber Hot Tubs(2 Pack)",
+   "field": "Ketofa",
+   "extracted": true,
+   "top_relevance_removed": true,
+   "ok": true
+  },
+  {
+   "query": "7 draw white dresser",
+   "attribute": "color=white",
+   "title": "anyrie 7 drawer dresser",
+   "field": "black",
+   "extracted": true,
+   "top_relevance_removed": true,
+   "ok": true
+  },
+  {
+   "query": "black freestanding tub  with faucet",
+   "attribute": "shape=with faucet",
+   "title": "70 '' x 32 '' freestanding soaking fiberglass bathtub with faucet",
+   "field": "rectangular",
+   "extracted": true,
+   "top_relevance_removed": true,
+   "ok": true
+  }
+ ],
+ "wd_japanese_brand": true,
+ "spa_title_names_brand": false
+}

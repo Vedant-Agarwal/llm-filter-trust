@@ -1,0 +1,22 @@
+
+[esci] label-free safety per type: {'brand': 0.74, 'color': 0.69, 'material': 0.0, 'shape': 0.0, 'size': 0.0}
+
+== esci (base=hybrid, n=1699 queries); nDCG@10 mean [95% bootstrap CI]; paired diff vs ignore [CI], p (paired sign-flip)
+  ignore                                    85.15 [ 84.22, 86.06]   diff   +0.00 [  +0.00,  +0.00]  p=1.0000
+  hard filter                               30.90 [ 28.98, 32.89]   diff  -54.25 [ -56.19, -52.25]  p=0.0005
+  hard filter + title fallback (repair)     62.40 [ 60.58, 64.17]   diff  -22.75 [ -24.36, -21.17]  p=0.0005
+  fixed-order relaxation                    85.35 [ 84.41, 86.27]   diff   +0.20 [  +0.04,  +0.36]  p=0.0190
+  safety-gated hard filter (safety>=0.5)    64.10 [ 62.17, 66.01]   diff  -21.05 [ -22.71, -19.41]  p=0.0005
+  safety-gated + title fallback             73.69 [ 72.05, 75.22]   diff  -11.47 [ -12.75, -10.18]  p=0.0005
+  oracle subset of hard filters             86.04 [ 85.12, 86.93]   diff   +0.89 [  +0.70,  +1.09]  p=0.0005
+
+[wands] label-free safety per type: {'material': 0.72, 'color': 0.43, 'shape': 0.08, 'size': 0.08, 'brand': 0.0}
+
+== wands (base=hybrid, n=255 queries); nDCG@10 mean [95% bootstrap CI]; paired diff vs ignore [CI], p (paired sign-flip)
+  ignore                                    75.78 [ 72.55, 78.85]   diff   +0.00 [  +0.00,  +0.00]  p=1.0000
+  hard filter                               14.00 [ 10.39, 17.73]   diff  -61.78 [ -66.13, -57.41]  p=0.0005
+  hard filter + title fallback (repair)     38.58 [ 34.29, 43.06]   diff  -37.19 [ -41.41, -32.79]  p=0.0005
+  fixed-order relaxation                    72.86 [ 69.16, 76.32]   diff   -2.91 [  -4.80,  -1.38]  p=0.0005
+  safety-gated hard filter (safety>=0.5)    69.67 [ 65.84, 73.48]   diff   -6.10 [  -8.68,  -3.85]  p=0.0005
+  safety-gated + title fallback             73.62 [ 70.27, 76.88]   diff   -2.15 [  -3.65,  -0.90]  p=0.0005
+  oracle subset of hard filters             76.13 [ 72.97, 79.24]   diff   +0.35 [  +0.09,  +0.78]  p=0.0015

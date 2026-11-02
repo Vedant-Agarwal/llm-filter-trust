@@ -1,0 +1,22 @@
+qwen3b_lora esci hybrid n 1699 ignore 84.97 hard 30.92 (-54.05) relax +0.24 p=0.0030 oracle +0.92 avoided: title 58.2% gate+title 78.9%
+qwen3b_lora esci bm25 n 1699 ignore 83.10 hard 30.48 (-52.62) relax +0.38 p=0.0005 oracle +1.22 avoided: title 59.4% gate+title 79.9%
+qwen3b_lora esci dense n 1699 ignore 84.69 hard 30.92 (-53.77) relax +0.12 p=0.1974 oracle +0.87 avoided: title 58.5% gate+title 78.6%
+qwen3b_lora wands hybrid n 255 ignore 75.78 hard 14.00 (-61.78) relax -2.91 p=0.0005 oracle +0.35 avoided: title 39.8% gate+title 96.5%
+qwen3b_lora wands bm25 n 255 ignore 69.50 hard 13.33 (-56.17) relax -2.25 p=0.0105 oracle +1.00 avoided: title 41.7% gate+title 96.5%
+qwen3b_lora wands dense n 255 ignore 74.43 hard 14.80 (-59.63) relax -2.07 p=0.0080 oracle +0.82 avoided: title 40.8% gate+title 97.7%
+qwen72 esci hybrid n 678 ignore 83.23 hard 19.87 (-63.36) relax +0.02 p=0.9100 oracle +0.96 avoided: title 61.2% gate+title 88.7%
+qwen72 esci bm25 n 678 ignore 81.76 hard 19.61 (-62.15) relax +0.15 p=0.3188 oracle +1.19 avoided: title 62.0% gate+title 89.4%
+qwen72 esci dense n 678 ignore 82.28 hard 19.75 (-62.53) relax +0.06 p=0.6502 oracle +1.03 avoided: title 62.0% gate+title 89.1%
+qwen72 wands hybrid n 123 ignore 68.62 hard 17.11 (-51.51) relax -5.07 p=0.0005 oracle +1.49 avoided: title 22.2% gate+title 93.8%
+qwen72 wands bm25 n 123 ignore 60.41 hard 15.95 (-44.46) relax -3.26 p=0.0340 oracle +2.68 avoided: title 24.5% gate+title 94.5%
+qwen72 wands dense n 123 ignore 70.58 hard 18.50 (-52.07) relax -4.59 p=0.0075 oracle +1.66 avoided: title 20.7% gate+title 94.0%
+qwen3b_base esci hybrid n 709 ignore 84.66 hard 20.55 (-64.12) relax +0.07 p=0.6707 oracle +1.01 avoided: title 54.2% gate+title 83.5%
+qwen3b_base esci bm25 n 709 ignore 82.85 hard 20.31 (-62.54) relax +0.20 p=0.1994 oracle +1.24 avoided: title 55.1% gate+title 83.9%
+qwen3b_base esci dense n 709 ignore 83.93 hard 20.49 (-63.44) relax +0.07 p=0.5847 oracle +0.92 avoided: title 54.9% gate+title 83.8%
+qwen3b_base wands hybrid n 140 ignore 70.06 hard 11.93 (-58.13) relax -4.97 p=0.0010 oracle +1.25 avoided: title 33.1% gate+title 77.9%
+qwen3b_base wands bm25 n 140 ignore 61.65 hard 10.73 (-50.91) relax -3.33 p=0.0130 oracle +2.14 avoided: title 36.7% gate+title 80.4%
+qwen3b_base wands dense n 140 ignore 70.44 hard 13.12 (-57.31) relax -4.54 p=0.0020 oracle +1.40 avoided: title 33.2% gate+title 78.2%
+shared esci {'n': 659, 'lora_drop': np.float64(58.39429235981945), 'qwen72_drop': np.float64(62.80294192999809)}
+shared wands {'n': 118, 'lora_drop': np.float64(48.28438480806583), 'qwen72_drop': np.float64(53.879575622398356)}
+{'n_runs': 18, 'drop_min': np.float64(44.46013589917052), 'drop_max': np.float64(64.11559683848138), 'avoid_gate_title_min': np.float64(77.94503664360256), 'avoid_gate_title_max': np.float64(97.66441151257845), 'oracle_max': np.float64(2.682119214802556), 'oracle_max_hybrid': np.float64(1.4916945395560215)}
+wrote results/grid.json

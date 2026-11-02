@@ -1,0 +1,9 @@
+# Exact versions resolved in the 2026-11-02 re-run (provenance/gpu_rerun_versions.txt). The original run recorded only vllm and peft.
+vllm==0.32.0
+peft==0.21.2
+datasets==5.1.0
+torch==2.13.0
+transformers==5.19.0
+tokenizers==0.23.3
+accelerate==1.15.0
+compressed-tensors==0.17.0

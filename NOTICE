@@ -1,0 +1,14 @@
+The MIT license in LICENSE covers the code in src/, gpu/ and run_all.sh. It does not cover the following.
+
+extractions/*.jsonl and result files contain text derived from third-party datasets:
+- Shopping Queries Dataset (ESCI), Amazon Science, Apache License 2.0.
+  https://github.com/amazon-science/esci-data  Accessed through the mirror https://huggingface.co/datasets/tasksource/esci (card: apache-2.0).
+- WANDS, Wayfair, MIT License, Copyright (c) 2021 ecir2022. https://github.com/wayfair/WANDS
+- QueryNER, BLT Lab, CC BY 4.0. https://huggingface.co/datasets/bltlab/queryner
+  Modified: BIO tags were converted to attribute lists and a subset of tags was mapped to our types (gpu/queryner_prep.py).
+
+The model outputs in extractions/ come from:
+- Qwen2.5-72B-Instruct-AWQ. "Qwen is licensed under the Qwen LICENSE AGREEMENT, Copyright (c) Alibaba Cloud. All Rights Reserved."
+- Qwen2.5-3B-Instruct. "Qwen is licensed under the Qwen RESEARCH LICENSE AGREEMENT, Copyright (c) Alibaba Cloud. All Rights Reserved."
+  That license is for non-commercial use (research or evaluation). The LoRA adapter is not in this repository.
+Using these outputs to train or improve a distributed model requires the "Built with Qwen" or "Improved using Qwen" notice under both licenses.

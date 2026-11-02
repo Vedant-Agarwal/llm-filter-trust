@@ -1,0 +1,24 @@
+Separate GPU re-run, 2026-11-02. The paper's numbers stay on the original run in extractions/.
+Clean clone of the repository, gpu/run_gpu.sh unmodified, no fixes needed. One NVIDIA A100-SXM4-80GB on RunPod secure cloud,
+image runpod/pytorch:1.0.3-cu1281-torch291-ubuntu2404, about 36 minutes of pod time. Query files were the byte-identical saved copies.
+Package versions: provenance/gpu_rerun_versions.txt. Log: provenance/gpu_rerun.log. Detail: results/gpu_rerun/. Re-run extractions are not committed.
+
+Table I (saved -> re-run)
+  qwen3b_lora  P 0.748 -> 0.740  R 0.714 -> 0.710  F1 0.731 -> 0.725
+  qwen72       P 0.785 -> 0.784  R 0.337 -> 0.335  F1 0.472 -> 0.470
+  qwen3b_base  P 0.592 -> 0.589  R 0.265 -> 0.265  F1 0.366 -> 0.366
+Greedy agreement per query (identical attribute sets after normalization; byte-identical greedy JSON)
+  qwen3b_lora  5389/5473 (98.47%) sets; 5389/5473 byte; esci 98.58% wands 97.29% qner 98.59%
+  qwen72       5467/5473 (99.89%) sets; 5466/5473 byte; esci 99.88% wands 100.00% qner 99.90%
+  qwen3b_base  5441/5473 (99.42%) sets; 5439/5473 byte; esci 99.38% wands 99.17% qner 99.70%
+Hard-filter drop, hybrid (saved -> re-run)
+  qwen3b_lora  esci  n 1699->1706 drop 54.05 -> 53.94  gate+title avoided 78.9% -> 79.0%
+  qwen3b_lora  wands n 255->254 drop 61.78 -> 61.71  gate+title avoided 96.5% -> 96.6%
+  qwen72       esci  n 678->678 drop 63.36 -> 63.21  gate+title avoided 88.7% -> 88.9%
+  qwen72       wands n 123->123 drop 51.51 -> 51.51  gate+title avoided 93.8% -> 93.8%
+  qwen3b_base  esci  n 709->709 drop 64.12 -> 63.90  gate+title avoided 83.5% -> 83.3%
+  qwen3b_base  wands n 140->139 drop 58.13 -> 57.70  gate+title avoided 77.9% -> 94.2%
+Largest absolute change in drop over all 18 runs: 0.75
+Grid summary: {'n_runs': '18.00->18.00', 'drop_min': '44.46->44.46', 'drop_max': '64.12->63.90', 'avoid_gate_title_min': '77.95->78.80', 'avoid_gate_title_max': '97.66->97.79', 'oracle_max': '2.68->2.68', 'oracle_max_hybrid': '1.49->1.49'}
+Rule correct at 0.4/0.5/0.6: [34, 36, 38] -> [34, 37, 38] cells 38 -> 38
+Spearman field: 0.906 -> 0.91

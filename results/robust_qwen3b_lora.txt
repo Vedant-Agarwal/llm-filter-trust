@@ -1,0 +1,16 @@
+
+== esci: wording-vs-disagree split by cosine threshold (share of all relevant x attribute pairs, n=23293)
+  tau=0.7: wording   4.4%  disagrees  17.2%  (kept 30.8%, empty 47.6% unchanged)
+  tau=0.8: wording   1.6%  disagrees  19.9%  (kept 30.8%, empty 47.6% unchanged)
+  tau=0.9: wording   0.3%  disagrees  21.3%  (kept 30.8%, empty 47.6% unchanged)
+  potentially lenient labels (color/material): 248 of 6186 relevant pairs (4.0%), 239 distinct (query, product)
+  all labels    : ignore 85.0  hard filter 30.9  drop 54.1  (n=1699)
+  lenient removed: ignore 84.7  hard filter 31.1  drop 53.6  (n=1699)
+
+== wands: wording-vs-disagree split by cosine threshold (share of all relevant x attribute pairs, n=34420)
+  tau=0.7: wording   9.4%  disagrees  16.6%  (kept 15.2%, empty 58.8% unchanged)
+  tau=0.8: wording   2.6%  disagrees  23.4%  (kept 15.2%, empty 58.8% unchanged)
+  tau=0.9: wording   0.4%  disagrees  25.6%  (kept 15.2%, empty 58.8% unchanged)
+  potentially lenient labels (color/material): 2877 of 12912 relevant pairs (22.3%), 2762 distinct (query, product)
+  all labels    : ignore 75.8  hard filter 14.0  drop 61.8  (n=255)
+  lenient removed: ignore 73.8  hard filter 14.1  drop 59.6  (n=254)

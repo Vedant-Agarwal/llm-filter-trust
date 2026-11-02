@@ -1,0 +1,198 @@
+line status  prov  expected     actual    tol  claim
+  29 PASS    C           44    44.4601    0.5  hard-filter drop, grid minimum (18 runs)
+  29 PASS    C           64    64.1156    0.5  hard-filter drop, grid maximum
+  43 PASS    C           44    44.4601    0.5  hard-filter drop, grid minimum (18 runs)
+  43 PASS    C           64    64.1156    0.5  hard-filter drop, grid maximum
+  29 PASS    C         85.0      84.97   0.05  ESCI ignore nDCG@10
+  29 PASS    C         30.9      30.92   0.05  ESCI hard nDCG@10
+  29 PASS    C         75.8      75.78   0.05  WANDS ignore nDCG@10
+  29 PASS    C         14.0       14.0   0.05  WANDS hard nDCG@10
+  29 PASS    C         true     0.0005      0  p<0.001 for both hard-filter drops
+  29 PASS    G         0.73     0.7305  0.005  LoRA F1
+  29 PASS    G         0.47     0.4719  0.005  72B F1
+  29 PASS    C            4     4.4086    0.5  shared-query reduction, low end (ESCI)
+  29 PASS    C            6     5.5952    0.5  shared-query reduction, high end (WANDS)
+  29 PASS    C         0.91     0.9063  0.005  Spearman where a field exists
+  29 PASS    C           36       36.0      0  rule correct of 38
+  29 PASS    C           38       38.0      0  cells
+  29 PASS    C           20       20.0      0  rule correct where a field exists
+  29 PASS    C           22       22.0      0  cells with a field
+  29 PASS    C           78     77.945    0.5  gating + title, loss avoided, grid minimum
+  29 PASS    C           98    97.6644    0.5  gating + title, loss avoided, grid maximum
+  46 PASS    C           78     77.945    0.5  gating + title, loss avoided, grid minimum
+  46 PASS    C           98    97.6644    0.5  gating + title, loss avoided, grid maximum
+  29 PASS    C          1.5     1.4917   0.05  oracle gain, hybrid, maximum
+  29 PASS    C          2.7     2.6821   0.05  oracle gain, all rankers, maximum
+  44 PASS    C          1.5        1.5   0.05  wording share by type, minimum (types with a field)
+  44 PASS    C         10.2       10.2   0.05  wording share by type, maximum
+  89 PASS    C          1.5        1.5   0.05  wording share by type, minimum (types with a field)
+  89 PASS    C         10.2       10.2   0.05  wording share by type, maximum
+  55 PASS    C            2     1.9029    0.5  mirror repeats, share of rows
+  55 PASS    C         19.0    18.9967   0.05  distinct products per query (official)
+  55 PASS    C         true      77461      0  product-ID-only join reproduces the mirror rows exactly
+  55 PASS    C         true      0.198      0  ESCI hard-filter drop changes by at most 0.2 on official files
+  55 PASS    C         true [34, 36, 38]      0  no rule count changes on official files
+  55 PASS    C         4000     4000.0      0  ESCI queries
+  55 PASS    C         19.4    19.3652   0.05  ESCI mean judged
+  55 PASS    C          480      480.0      0  WANDS queries
+  55 PASS    C        42994    42994.0      0  WANDS products
+  55 PASS    C       233448   233448.0      0  WANDS judgments
+  55 PASS    C          486     486.35    0.5  WANDS judgments per query
+  55 PASS    C         7949     7949.0      0  WANDS feature keys (lower-cased, non-empty value)
+  55 PASS    C         true       code      0  ESCI gains 1 / 0.1 / 0.01 / 0 in build_index.py
+  55 PASS    C         true       code      0  WANDS gains 2 / 1 in build_index.py
+  57 PASS    C         7841     7841.0      0  QueryNER train
+  57 PASS    C            8        7.9    0.5  training overlap share
+  57 PASS    C          316      316.0      0  overlap count (audit: 316)
+  57 PASS    G         true       code      0  LoRA rank 16, 2 epochs in lora_train.py
+  57 PASS    G         true       code      0  five samples, temperature 0.7 in extract.py
+  61 PASS    C          993      993.0      0  QueryNER test queries
+  67 PASS    G        0.785     0.7847 0.0005  Table I qwen72 precision
+  67 PASS    G        0.337     0.3374 0.0005  Table I qwen72 recall
+  67 PASS    G        0.472     0.4719 0.0005  Table I qwen72 F1
+  68 PASS    G        0.592     0.5917 0.0005  Table I qwen3b_base precision
+  68 PASS    G        0.265     0.2654 0.0005  Table I qwen3b_base recall
+  68 PASS    G        0.366     0.3665 0.0005  Table I qwen3b_base F1
+  69 PASS    G        0.748     0.7478 0.0005  Table I qwen3b_lora precision
+  69 PASS    G        0.714      0.714 0.0005  Table I qwen3b_lora recall
+  69 PASS    G        0.731     0.7305 0.0005  Table I qwen3b_lora F1
+  74 PASS    C         true       code      0  top 300 kept on WANDS in build_index.py
+  74 PASS    C         1699     1699.0      0  evaluated ESCI queries
+  74 PASS    C          255      255.0      0  evaluated WANDS queries
+  74 PASS    G         true       2591      0  GPU work under one hour (saved timing log)
+  78 PASS    C        -54.1     -54.05   0.05  ESCI drop
+  78 PASS    C        -56.0     -55.97    0.3  ESCI drop CI low
+  78 PASS    C        -52.0     -52.04    0.3  ESCI drop CI high
+  78 PASS    C        -61.8     -61.78   0.05  WANDS drop
+  78 PASS    C        -66.1     -66.13    0.3  WANDS drop CI low
+  78 PASS    C        -57.4     -57.41    0.3  WANDS drop CI high
+  78 PASS    C        -63.4     -63.36   0.05  72B ESCI drop
+  78 PASS    C        -51.5     -51.51   0.05  72B WANDS drop
+  78 PASS    C           16    15.9462    0.5  72B BM25/dense hard, low
+  78 PASS    C           20    19.7467    0.5  72B BM25/dense hard, high
+  78 PASS    C           13    13.3269    0.5  LoRA BM25/dense hard, low
+  78 PASS    C           31      30.92    0.5  LoRA BM25/dense hard, high
+  78 PASS    C         20.6      20.55   0.05  3B prompted ESCI hard
+  78 PASS    C         11.9      11.93   0.05  3B prompted WANDS hard
+  78 PASS    C          2.9     2.9125   0.05  relaxation cost on WANDS, low
+  78 PASS    C          5.1     5.0746   0.05  relaxation cost on WANDS, high
+  78 PASS    C         true 0.0009995002498750624      0  relaxation p<0.002 on WANDS
+  78 PASS    C         true       0.02      0  relaxation recovers the loss on ESCI (no significant cost)
+  83 PASS    C         true          n      0  Fig 1 is LoRA + hybrid (n in panel titles)
+  89 PASS    C           31       31.0    0.5  ESCI disagree, low (color)
+  89 PASS    C           38       37.6    0.5  ESCI disagree, high (brand)
+  89 PASS    C           43       42.9    0.5  WANDS color disagree
+  89 PASS    C           36       36.2    0.5  WANDS color empty
+  89 PASS    C         true       100%      0  ESCI size/material/shape and WANDS brand 100% empty
+  89 PASS    C         true        9.4      0  wording below 10% at every cosine threshold
+  98 PASS    C         62.8    62.8029   0.05  shared ESCI 72B drop
+  98 PASS    C         58.4    58.3943   0.05  shared ESCI LoRA drop
+  98 PASS    C          659      659.0      0  shared ESCI n
+  98 PASS    C         53.9    53.8796   0.05  shared WANDS 72B drop
+  98 PASS    C         48.3    48.2844   0.05  shared WANDS LoRA drop
+  98 PASS    C          118      118.0      0  shared WANDS n
+  98 PASS    C            2     2.0577    0.1  attribute ratio ESCI ('about twice')
+  98 PASS    C          1.6     1.5692   0.05  attribute ratio WANDS
+  98 PASS    C         true       True      0  spa filter title does not name the queried brand
+ 108 PASS    C         true       True      0  Table II row 1: black freestanding tub  with faucet / color=black
+ 109 PASS    C         true       True      0  Table II row 2: white desk / color=white
+ 110 PASS    C         true       True      0  Table II row 3: master spa inner filters for hot tubs / brand=master spa
+ 111 PASS    C         true       True      0  Table II row 4: 7 draw white dresser / color=white
+ 112 PASS    C         true       True      0  Table II row 5: black freestanding tub  with faucet / shape=with faucet
+ 119 PASS    C         true       code      0  K=50 in safety_check.py
+ 121 PASS    C         0.98     0.9804  0.005  Spearman all cells
+ 121 PASS    C         0.91     0.9063  0.005  Spearman where a field exists
+ 121 PASS    C         0.66     0.6571  0.005  Spearman within ESCI
+ 121 PASS    C            6        6.0      0  n within ESCI
+ 121 PASS    C         0.82     0.8176  0.005  Spearman within WANDS
+ 121 PASS    C           16       16.0      0  n within WANDS
+ 121 PASS    C         true [('qwen3b_base', 'wands', 'color'), ('qwen3b_base', 'wands', 'material')]      0  the two errors are 3B prompted WANDS color and material
+ 121 PASS    C         0.51     0.5062  0.005  3B WANDS color safety
+ 121 PASS    C         0.16     0.1609  0.005  3B WANDS color kept
+ 121 PASS    C         0.53     0.5258  0.005  3B WANDS material safety
+ 121 PASS    C        0.495     0.4948 0.0005  3B WANDS material kept
+ 121 PASS    C         0.51     0.5062  0.005  WANDS color max safety
+ 121 PASS    C           16     16.087    0.5  WANDS color kept, low
+ 121 PASS    C           17    16.5103    0.5  WANDS color kept, high
+ 121 PASS    C          4.0        4.0   0.05  lenient share ESCI
+ 121 PASS    C         22.3       22.3   0.05  lenient share WANDS
+ 188 PASS    C            4        4.0    0.5  lenient share ESCI (rounded)
+ 188 PASS    C           22       22.3    0.5  lenient share WANDS (rounded)
+ 123 PASS    C           34       34.0      0  rule correct at 0.4
+ 169 PASS    C           34       34.0      0  Table IV rule correct at 0.4
+ 123 PASS    C           36       36.0      0  rule correct at 0.5
+ 169 PASS    C           36       36.0      0  Table IV rule correct at 0.5
+ 123 PASS    C           38       38.0      0  rule correct at 0.6
+ 169 PASS    C           38       38.0      0  Table IV rule correct at 0.6
+ 123 PASS    C          2.2        2.2   0.05  largest change in drop, lenient out
+ 188 PASS    C          2.2        2.2   0.05  largest change in drop, lenient out
+ 135 PASS    C         0.95     0.9534  0.005  Table III esci brand cover
+ 135 PASS    C         0.78     0.7755  0.005  Table III esci brand consist.
+ 135 PASS    C         0.74     0.7394  0.005  Table III esci brand safety
+ 135 PASS    C         0.55     0.5531  0.005  Table III esci brand kept
+ 136 PASS    C         0.90      0.904  0.005  Table III esci color cover
+ 136 PASS    C         0.76     0.7587  0.005  Table III esci color consist.
+ 136 PASS    C         0.69     0.6858  0.005  Table III esci color safety
+ 136 PASS    C         0.56     0.5634  0.005  Table III esci color kept
+ 138 PASS    C         0.96     0.9622  0.005  Table III wands material cover
+ 138 PASS    C         0.75     0.7513  0.005  Table III wands material consist.
+ 138 PASS    C         0.72     0.7229  0.005  Table III wands material safety
+ 138 PASS    C         0.60     0.6011  0.005  Table III wands material kept
+ 139 PASS    C         0.74     0.7393  0.005  Table III wands color cover
+ 139 PASS    C         0.58     0.5794  0.005  Table III wands color consist.
+ 139 PASS    C         0.43     0.4284  0.005  Table III wands color safety
+ 139 PASS    C         0.17     0.1651  0.005  Table III wands color kept
+ 140 PASS    C         0.50     0.4958  0.005  Table III wands shape cover
+ 140 PASS    C         0.17     0.1714  0.005  Table III wands shape consist.
+ 140 PASS    C         0.08      0.085  0.005  Table III wands shape safety
+ 140 PASS    C         0.10     0.0961  0.005  Table III wands shape kept
+ 141 PASS    C         0.25     0.2511  0.005  Table III wands size cover
+ 141 PASS    C         0.32     0.3243  0.005  Table III wands size consist.
+ 141 PASS    C         0.08     0.0814  0.005  Table III wands size safety
+ 141 PASS    C         0.03     0.0262  0.005  Table III wands size kept
+ 137 PASS    C         true          0      0  Table III esci size: cover, safety, kept all 0.00
+ 137 PASS    C         true          0      0  Table III esci material: cover, safety, kept all 0.00
+ 137 PASS    C         true          0      0  Table III esci shape: cover, safety, kept all 0.00
+ 142 PASS    C         true          0      0  Table III wands brand: cover, safety, kept all 0.00
+ 150 PASS    C           38       38.0      0  Fig 3 cells
+ 150 PASS    C            2        2.0      0  Fig 3 circled (misclassified) cells
+ 164 PASS    C          4.4        4.4   0.05  Table IV wording esci tau=0.7
+ 164 PASS    C          1.6        1.6   0.05  Table IV wording esci tau=0.8
+ 164 PASS    C          0.3        0.3   0.05  Table IV wording esci tau=0.9
+ 165 PASS    C          9.4        9.4   0.05  Table IV wording wands tau=0.7
+ 165 PASS    C          2.6        2.6   0.05  Table IV wording wands tau=0.8
+ 165 PASS    C          0.4        0.4   0.05  Table IV wording wands tau=0.9
+ 170 PASS    C           79    78.9269    0.5  Table IV loss avoided ESCI cut 0.4
+ 170 PASS    C           79    78.9269    0.5  Table IV loss avoided ESCI cut 0.5
+ 170 PASS    C           79    78.9269    0.5  Table IV loss avoided ESCI cut 0.6
+ 171 PASS    C           88    88.4914    0.5  Table IV loss avoided WANDS cut 0.4
+ 171 PASS    C           97    96.5199    0.5  Table IV loss avoided WANDS cut 0.5
+ 171 PASS    C           97    96.5199    0.5  Table IV loss avoided WANDS cut 0.6
+ 175 PASS    C         54.1       54.1   0.05  Table IV ESCI drop
+ 175 PASS    C         53.6       53.6   0.05  Table IV ESCI lenient-out drop
+ 175 PASS    C          4.0        4.0   0.05  Table IV ESCI share lenient
+ 176 PASS    C         61.8       61.8   0.05  Table IV WANDS drop
+ 176 PASS    C         59.6       59.6   0.05  Table IV WANDS lenient-out drop
+ 176 PASS    C         22.3       22.3   0.05  Table IV WANDS share lenient
+ 183 PASS    C           58    58.1869    0.5  title fallback avoided ESCI
+ 183 PASS    C           40    39.8025    0.5  title fallback avoided WANDS
+ 183 PASS    C           79    78.9269    0.5  gating + title avoided ESCI, LoRA
+ 183 PASS    C           97    96.5199    0.5  gating + title avoided WANDS, LoRA
+ 183 PASS    C           89    88.7468    0.5  gating + title avoided ESCI, 72B
+ 183 PASS    C           94    93.7876    0.5  gating + title avoided WANDS, 72B
+ 183 PASS    C          2.2       2.15   0.05  gap to unfiltered, low
+ 183 PASS    C         11.4      11.39   0.05  gap to unfiltered, high
+ 185 PASS    C         true       code      0  oracle searches subsets of up to four attributes in depth.py
+ 185 PASS    C          0.9       0.92   0.05  oracle ESCI
+ 185 PASS    C          0.7       0.74    0.3  oracle ESCI CI low
+ 185 PASS    C          1.1       1.13    0.3  oracle ESCI CI high
+ 185 PASS    C          0.4       0.35   0.05  oracle WANDS
+ 185 PASS    C          0.1       0.09    0.3  oracle WANDS CI low
+ 185 PASS    C          0.8       0.78    0.3  oracle WANDS CI high
+ 185 PASS    C          1.0       0.96   0.05  oracle ESCI, 72B
+ 185 PASS    C          1.5       1.49   0.05  oracle WANDS, 72B
+ 185 PASS    C         true       0.09      0  learned policy, other retailer: no meaningful gain over ignoring (at most +0.5 in 6 runs)
+ 188 PASS    C          123      123.0      0  WANDS slice, low
+ 188 PASS    C          255      255.0      0  WANDS slice, high
+
+TOTAL 195: PASS 195  FAIL 0  MISSING 0

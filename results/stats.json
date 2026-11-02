@@ -1,0 +1,61 @@
+{
+ "esci_queries": 4000,
+ "esci_mean_judged": 19.36525,
+ "esci_min_judged": 8,
+ "wands_products": 42994,
+ "wands_queries": 480,
+ "wands_judgments": 233448,
+ "wands_judgments_per_query": 486.35,
+ "wands_feature_keys": 7949,
+ "wands_feature_keys_used_by_index": 7940,
+ "wands_labels": {
+  "Partial": 146633,
+  "Irrelevant": 61201,
+  "Exact": 25614
+ },
+ "queryner_train": 7841,
+ "queryner_test": 993,
+ "esci_unique_queries": 4000,
+ "overlap_queryner_train": 316,
+ "overlap_share": 7.9,
+ "overlap_with_attrs": 155,
+ "rows_qwen3b_lora": 5473,
+ "rows_qwen72": 5473,
+ "rows_qwen3b_base": 5473,
+ "attributes": {
+  "qwen3b_lora": {
+   "esci": {
+    "attrs": 2033,
+    "queries": 1699
+   },
+   "wands": {
+    "attrs": 306,
+    "queries": 255
+   }
+  },
+  "qwen72": {
+   "esci": {
+    "attrs": 988,
+    "queries": 678
+   },
+   "wands": {
+    "attrs": 195,
+    "queries": 123
+   }
+  },
+  "qwen3b_base": {
+   "esci": {
+    "attrs": 1214,
+    "queries": 709
+   },
+   "wands": {
+    "attrs": 259,
+    "queries": 140
+   }
+  }
+ },
+ "attr_ratio_lora_vs_72b": {
+  "esci": 2.0576923076923075,
+  "wands": 1.5692307692307692
+ }
+}

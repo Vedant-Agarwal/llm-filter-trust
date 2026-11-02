@@ -1,0 +1,5 @@
+GPU pod time for the paper's extraction and LoRA training, from the cost watchdog that polled once a minute.
+First poll 133 s after the pod was rented; last poll before the pod was deleted at the end of the run:
+elapsed_seconds=2591
+Hardware: one NVIDIA A100 80GB on RunPod, image runpod/pytorch:1.0.3-cu1281-torch291-ubuntu2404. vllm 0.32.0, peft 0.21.2 (gpu_run.log).
+Other packages on the pod were not recorded.

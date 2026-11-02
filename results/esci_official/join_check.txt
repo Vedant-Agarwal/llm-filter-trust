@@ -1,0 +1,52 @@
+{
+ "official_us_test_rows": 425762,
+ "official_us_test_queries": 22458,
+ "official_duplicate_query_product": 0,
+ "products_rows": 1814924,
+ "products_unique_id": 1802772,
+ "products_unique_id_locale": 1814924,
+ "products_ids_in_several_locales": 11567,
+ "sample_rows_locale_join": 75987,
+ "sample_rows_locale_less_join": 77461,
+ "sample_rows_mirror": 77461,
+ "unmatched_products_locale_join": 0,
+ "mirror_rows_in_locale_less_join": 77461,
+ "mirror_rows_not_in_locale_less_join": 0,
+ "locale_less_rows_not_in_mirror": 0,
+ "mirror_rows_in_locale_join": 75987,
+ "mirror_rows_not_in_locale_join": 1474,
+ "locale_join_rows_not_in_mirror": 0,
+ "label_pairs_mirror": 75987,
+ "label_pairs_official": 75987,
+ "label_mismatches": 0,
+ "official_mean_rows": 18.99675,
+ "official_min_rows": 8,
+ "sample_queries_found": 4000,
+ "sample_queries_below_8_official": 0,
+ "fresh_sample_same_rule_overlap": 4000,
+ "official_us_test_queries_with_8": 22458,
+ "wd_queries": {
+  "wd": {
+   "mirror_japanese_brand_rows": 9,
+   "official_japanese_brand_rows": 0,
+   "official_rows": 16,
+   "mirror_rows": 35,
+   "official_exact_brands": [
+    "WD_BLACK",
+    "Western Digital"
+   ]
+  },
+  "wd gold": {
+   "mirror_japanese_brand_rows": 4,
+   "official_japanese_brand_rows": 0,
+   "official_rows": 16,
+   "mirror_rows": 20,
+   "official_exact_brands": [
+    "WD Companies",
+    "Western Digital"
+   ]
+  }
+ },
+ "official_cjk_title_rows": 14,
+ "mirror_cjk_title_rows": 490
+}

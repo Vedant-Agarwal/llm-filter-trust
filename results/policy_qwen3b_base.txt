@@ -1,0 +1,38 @@
+esci queries with >=1 extracted attribute: 709 | attrs: 1214 | types: {'brand': 222, 'material': 189, 'style': 181, 'size': 204, 'color': 289, 'shape': 54, 'pattern': 75}
+wands queries with >=1 extracted attribute: 140 | attrs: 259 | types: {'color': 59, 'material': 53, 'shape': 20, 'pattern': 17, 'brand': 34, 'size': 29, 'style': 47}
+
+== train esci -> test wands (beta=0.5, model=ridge, types_agnostic=False); nDCG@10, Exact-recall@100, n
+  ignore (base ranker)                                         (np.float64(70.06), np.float64(54.74), 140)
+  always hard-filter                                           (np.float64(11.93), np.float64(6.82), 140)
+  always boost                                                 (np.float64(64.36), np.float64(55.68), 140)
+  fixed-order relaxation                                       (np.float64(65.09), np.float64(50.48), 140)
+  heuristic (conf>=.8 & fill>=.9 -> hard, else boost)          (np.float64(51.65), np.float64(41.96), 140)
+  learned policy (trained on esci)                             (np.float64(65.18), np.float64(55.93), 140)
+  oracle (best per query)                                      (np.float64(70.66), np.float64(54.17), 131)
+
+== train wands -> test esci (beta=0.05, model=ridge, types_agnostic=False); nDCG@10, Exact-recall@100, n
+  ignore (base ranker)                                         (np.float64(84.66), np.float64(100.0), 709)
+  always hard-filter                                           (np.float64(20.55), np.float64(19.44), 709)
+  always boost                                                 (np.float64(84.67), np.float64(100.0), 709)
+  fixed-order relaxation                                       (np.float64(84.73), np.float64(96.95), 709)
+  heuristic (conf>=.8 & fill>=.9 -> hard, else boost)          (np.float64(75.0), np.float64(83.62), 709)
+  learned policy (trained on wands)                            (np.float64(84.75), np.float64(97.37), 709)
+  oracle (best per query)                                      (np.float64(86.32), np.float64(99.01), 664)
+
+== train esci -> test esci (beta=0.5, model=ridge, types_agnostic=False); nDCG@10, Exact-recall@100, n
+  ignore (base ranker)                                         (np.float64(83.04), np.float64(100.0), 355)
+  always hard-filter                                           (np.float64(19.08), np.float64(18.32), 355)
+  always boost                                                 (np.float64(83.48), np.float64(100.0), 355)
+  fixed-order relaxation                                       (np.float64(83.04), np.float64(97.55), 355)
+  heuristic (conf>=.8 & fill>=.9 -> hard, else boost)          (np.float64(73.92), np.float64(84.79), 355)
+  learned policy (trained on esci)                             (np.float64(83.17), np.float64(99.24), 355)
+  oracle (best per query)                                      (np.float64(84.87), np.float64(99.37), 335)
+
+== train wands -> test wands (beta=0.05, model=ridge, types_agnostic=False); nDCG@10, Exact-recall@100, n
+  ignore (base ranker)                                         (np.float64(67.27), np.float64(50.6), 70)
+  always hard-filter                                           (np.float64(13.74), np.float64(6.83), 70)
+  always boost                                                 (np.float64(65.89), np.float64(50.68), 70)
+  fixed-order relaxation                                       (np.float64(60.85), np.float64(44.29), 70)
+  heuristic (conf>=.8 & fill>=.9 -> hard, else boost)          (np.float64(49.56), np.float64(39.34), 70)
+  learned policy (trained on wands)                            (np.float64(67.79), np.float64(50.5), 70)
+  oracle (best per query)                                      (np.float64(67.98), np.float64(51.14), 66)

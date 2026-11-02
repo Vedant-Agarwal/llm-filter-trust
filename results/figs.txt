@@ -1,0 +1,1 @@
+38 cells; 16 with no field; misses: [('qwen3b_base', 'wands', 'color'), ('qwen3b_base', 'wands', 'material')]
