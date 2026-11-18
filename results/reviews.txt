@@ -1,0 +1,194 @@
+== R-A per-cell counts (hybrid top-50 pool for the label-free score; relevant = top-gain products)
+extractor    ret   type      queries relpairs titlem   cov agree  SAFE  kept
+qwen3b_base  esci  brand         222     2485   2580  0.95  0.75  0.71  0.58
+qwen3b_base  esci  color         273     3386   3127  0.88  0.69  0.61  0.50
+qwen3b_base  esci  material      185     2344   1990  0.00  0.00  0.00  0.00
+qwen3b_base  esci  style         158     2040   1816  0.00  0.00  0.00  0.00
+qwen3b_base  esci  size          191     2235   1468  0.00  0.00  0.00  0.00
+qwen3b_base  esci  shape          52      590    466  0.00  0.00  0.00  0.00
+qwen3b_base  esci  pattern        73      838    581  0.00  0.00  0.00  0.00
+qwen3b_base  wands material       52     7027   1311  0.98  0.54  0.53  0.49
+qwen3b_base  wands color          55     7130    663  0.74  0.69  0.51  0.16
+qwen3b_base  wands pattern        17      461    274  0.46  0.31  0.14  0.07
+qwen3b_base  wands size           29     2348    236  0.26  0.28  0.07  0.14
+qwen3b_base  wands shape          17     2167    492  0.47  0.09  0.04  0.03
+qwen3b_base  wands style          39     6797    769  0.76  0.05  0.03  0.02
+qwen3b_base  wands brand          34     3381    194  0.00  0.00  0.00  0.00
+qwen3b_lora  esci  brand         903     9700   9414  0.95  0.78  0.74  0.55
+qwen3b_lora  esci  color         265     3211   3083  0.90  0.76  0.69  0.56
+qwen3b_lora  esci  material      233     2975   2740  0.00  0.00  0.00  0.00
+qwen3b_lora  esci  shape         186     2924   1819  0.00  0.00  0.00  0.00
+qwen3b_lora  esci  size          379     4483   2624  0.00  0.00  0.00  0.00
+qwen3b_lora  wands material       55     5771   1335  0.96  0.75  0.72  0.60
+qwen3b_lora  wands color          57     7141    718  0.74  0.58  0.43  0.17
+qwen3b_lora  wands shape          47     5068   1173  0.50  0.17  0.08  0.10
+qwen3b_lora  wands size           45     3054    296  0.25  0.32  0.08  0.03
+qwen3b_lora  wands brand          98    13386    439  0.00  0.00  0.00  0.00
+qwen72       esci  brand         162     1749   2147  1.00  0.81  0.81  0.68
+qwen72       esci  color         268     3138   2987  0.88  0.75  0.66  0.55
+qwen72       esci  size          257     2841   1704  0.00  0.00  0.00  0.00
+qwen72       esci  material      147     1963   1692  0.00  0.00  0.00  0.00
+qwen72       esci  style          40      506    279  0.00  0.00  0.00  0.00
+qwen72       esci  pattern        46      496    452  0.00  0.00  0.00  0.00
+qwen72       esci  shape          41      436    368  0.00  0.00  0.00  0.00
+qwen72       wands material       38     5417    954  0.98  0.66  0.65  0.60
+qwen72       wands color          56     6989    564  0.72  0.69  0.50  0.16
+qwen72       wands shape          12      383    273  0.59  0.48  0.29  0.37
+qwen72       wands pattern         7       65    171  0.42  0.36  0.15  0.02
+qwen72       wands style          14     1406    231  0.78  0.15  0.12  0.14
+qwen72       wands size           36     3576    285  0.28  0.35  0.10  0.14
+qwen72       wands brand          26     3017     91  0.00  0.00  0.00  0.00
+cells: 38; with a field: 22
+
+== R-B score ablation (cut-off 0.5 for every continuous score; 'exists' = any field present)
+-- all cells (n=38)
+  exists    Spearman  0.89 | target kept>=0.5: correct 24/38, approved 22, false approvals 14, missed 0 | target kept>=0.8: correct 16/38, approved 22, false approvals 22, missed 0
+  coverage  Spearman  0.97 | target kept>=0.5: correct 31/38, approved 15, false approvals 7, missed 0 | target kept>=0.8: correct 23/38, approved 15, false approvals 15, missed 0
+  agreement Spearman  0.97 | target kept>=0.5: correct 34/38, approved 12, false approvals 4, missed 0 | target kept>=0.8: correct 26/38, approved 12, false approvals 12, missed 0
+  safety    Spearman  0.98 | target kept>=0.5: correct 36/38, approved 10, false approvals 2, missed 0 | target kept>=0.8: correct 28/38, approved 10, false approvals 10, missed 0
+-- cells with a field (n=22)
+  exists    Spearman   nan | target kept>=0.5: correct 8/22, approved 22, false approvals 14, missed 0 | target kept>=0.8: correct 0/22, approved 22, false approvals 22, missed 0
+  coverage  Spearman  0.85 | target kept>=0.5: correct 15/22, approved 15, false approvals 7, missed 0 | target kept>=0.8: correct 7/22, approved 15, false approvals 15, missed 0
+  agreement Spearman  0.84 | target kept>=0.5: correct 18/22, approved 12, false approvals 4, missed 0 | target kept>=0.8: correct 10/22, approved 12, false approvals 12, missed 0
+  safety    Spearman  0.91 | target kept>=0.5: correct 20/22, approved 10, false approvals 2, missed 0 | target kept>=0.8: correct 12/22, approved 10, false approvals 10, missed 0
+
+== R-B2 approved cells (safety>=0.5): kept with 95% query-bootstrap CI, P(kept<0.5), P(kept<0.8)
+  qwen3b_base  esci  brand     kept 0.58 [0.50,0.64]  P<0.5 0.02  P<0.8 1.00
+  qwen3b_base  esci  color     kept 0.50 [0.45,0.56]  P<0.5 0.44  P<0.8 1.00
+  qwen3b_base  wands color     kept 0.16 [0.08,0.27]  P<0.5 1.00  P<0.8 1.00
+  qwen3b_base  wands material  kept 0.49 [0.23,0.75]  P<0.5 0.49  P<0.8 1.00
+  qwen3b_lora  esci  brand     kept 0.55 [0.52,0.59]  P<0.5 0.00  P<0.8 1.00
+  qwen3b_lora  esci  color     kept 0.56 [0.52,0.61]  P<0.5 0.01  P<0.8 1.00
+  qwen3b_lora  wands material  kept 0.60 [0.34,0.77]  P<0.5 0.23  P<0.8 1.00
+  qwen72       esci  brand     kept 0.68 [0.61,0.76]  P<0.5 0.00  P<0.8 1.00
+  qwen72       esci  color     kept 0.55 [0.51,0.60]  P<0.5 0.01  P<0.8 1.00
+  qwen72       wands material  kept 0.60 [0.26,0.78]  P<0.5 0.24  P<0.8 0.98
+
+== R-C held-out queries: 200 random 50/50 query splits (same split for all extractors); cut-off tuned on half A (grid 0.05..0.95, target kept>=0.5), tested on half B
+  tau              mean 0.560  [2.5%,97.5%] [0.450,0.650]
+  n                mean 37.055  [2.5%,97.5%] [36.000,38.000]
+  acc_tuned        mean 0.930  [2.5%,97.5%] [0.833,1.000]
+  acc_fixed        mean 0.920  [2.5%,97.5%] [0.838,1.000]
+  acc_tuned_field  mean 0.877  [2.5%,97.5%] [0.700,1.000]
+  acc_fixed_field  mean 0.859  [2.5%,97.5%] [0.714,1.000]
+  fa_tuned         mean 1.930  [2.5%,97.5%] [0.000,6.000]
+  fa_fixed         mean 2.695  [2.5%,97.5%] [0.000,6.000]
+  fa80_fixed       mean 9.915  [2.5%,97.5%] [8.000,12.000]
+  tuned cut-offs: {np.float64(0.6): 66, np.float64(0.5): 56, np.float64(0.55): 50, np.float64(0.65): 21, np.float64(0.45): 4, np.float64(0.4): 2}
+
+== R-D policies on identical queries (base=hybrid): nDCG@10 | relevant kept (share of top-gain products the filters keep) | queries with an active filter
+-- qwen72 esci all queries (n=678)
+  ignore                       nDCG  83.23  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  19.87  vs ignore -63.36 [-66.14,-60.72]  rel kept  18.7%  active 100.0%
+  title fallback (all attrs)   nDCG  58.65  vs ignore -24.59 [-27.01,-22.23]  rel kept  52.5%  active 100.0%
+  fixed-order relaxation       nDCG  83.25  vs ignore  +0.02 [ -0.27, +0.29]  rel kept  96.7%  active  23.9%
+  gate:exists + fallback       nDCG  76.10  vs ignore  -7.13 [ -8.63, -5.55]  rel kept  84.3%  active  58.3%
+  gate:coverage + fallback     nDCG  76.10  vs ignore  -7.13 [ -8.74, -5.53]  rel kept  84.3%  active  58.3%
+  gate:agreement + fallback    nDCG  76.10  vs ignore  -7.13 [ -8.83, -5.58]  rel kept  84.3%  active  58.3%
+  gate:safety + fallback       nDCG  76.10  vs ignore  -7.13 [ -8.80, -5.60]  rel kept  84.3%  active  58.3%
+  gate:safety, no fallback     nDCG  69.62  vs ignore -13.62 [-15.98,-11.57]  rel kept  75.6%  active  58.3%
+-- qwen72 wands all queries (n=123)
+  ignore                       nDCG  68.62  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  17.11  vs ignore -51.51 [-57.54,-45.29]  rel kept  16.4%  active 100.0%
+  title fallback (all attrs)   nDCG  28.56  vs ignore -40.07 [-46.25,-33.28]  rel kept  26.6%  active 100.0%
+  fixed-order relaxation       nDCG  63.55  vs ignore  -5.07 [ -8.40, -2.19]  rel kept  76.8%  active  46.3%
+  gate:exists + fallback       nDCG  39.82  vs ignore -28.80 [-35.61,-22.18]  rel kept  32.9%  active  98.4%
+  gate:coverage + fallback     nDCG  52.25  vs ignore -16.38 [-21.86,-10.16]  rel kept  49.8%  active  80.5%
+  gate:agreement + fallback    nDCG  53.97  vs ignore -14.65 [-19.83, -9.90]  rel kept  60.4%  active  65.0%
+  gate:safety + fallback       nDCG  65.43  vs ignore  -3.20 [ -6.12, -0.67]  rel kept  85.1%  active  30.9%
+  gate:safety, no fallback     nDCG  60.59  vs ignore  -8.03 [-12.34, -4.55]  rel kept  81.9%  active  30.9%
+-- qwen3b_base esci all queries (n=709)
+  ignore                       nDCG  84.66  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  20.55  vs ignore -64.12 [-66.94,-61.12]  rel kept  19.4%  active 100.0%
+  title fallback (all attrs)   nDCG  55.29  vs ignore -29.37 [-31.82,-26.85]  rel kept  49.8%  active 100.0%
+  fixed-order relaxation       nDCG  84.73  vs ignore  +0.07 [ -0.23, +0.37]  rel kept  96.9%  active  24.4%
+  gate:exists + fallback       nDCG  74.08  vs ignore -10.59 [-12.43, -8.77]  rel kept  79.9%  active  65.3%
+  gate:coverage + fallback     nDCG  74.08  vs ignore -10.59 [-12.52, -8.69]  rel kept  79.9%  active  65.3%
+  gate:agreement + fallback    nDCG  74.08  vs ignore -10.59 [-12.51, -8.76]  rel kept  79.9%  active  65.3%
+  gate:safety + fallback       nDCG  74.08  vs ignore -10.59 [-12.49, -8.91]  rel kept  79.9%  active  65.3%
+  gate:safety, no fallback     nDCG  63.92  vs ignore -20.74 [-23.45,-18.15]  rel kept  68.0%  active  65.3%
+-- qwen3b_base wands all queries (n=140)
+  ignore                       nDCG  70.06  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  11.93  vs ignore -58.13 [-63.59,-52.34]  rel kept  10.5%  active 100.0%
+  title fallback (all attrs)   nDCG  31.19  vs ignore -38.88 [-45.32,-32.64]  rel kept  29.4%  active 100.0%
+  fixed-order relaxation       nDCG  65.09  vs ignore  -4.97 [ -7.78, -2.46]  rel kept  80.1%  active  39.3%
+  gate:exists + fallback       nDCG  41.75  vs ignore -28.32 [-34.25,-22.38]  rel kept  34.8%  active  94.3%
+  gate:coverage + fallback     nDCG  52.17  vs ignore -17.90 [-22.89,-12.98]  rel kept  52.6%  active  77.1%
+  gate:agreement + fallback    nDCG  57.24  vs ignore -12.82 [-17.37, -8.31]  rel kept  64.5%  active  64.3%
+  gate:safety + fallback       nDCG  57.24  vs ignore -12.82 [-17.33, -8.37]  rel kept  64.5%  active  64.3%
+  gate:safety, no fallback     nDCG  46.01  vs ignore -24.05 [-29.56,-18.16]  rel kept  54.8%  active  64.3%
+-- qwen3b_lora esci all queries (n=1699)
+  ignore                       nDCG  84.97  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  30.92  vs ignore -54.05 [-56.04,-52.05]  rel kept  30.4%  active 100.0%
+  title fallback (all attrs)   nDCG  62.38  vs ignore -22.60 [-24.26,-21.04]  rel kept  59.4%  active 100.0%
+  fixed-order relaxation       nDCG  85.21  vs ignore  +0.24 [ +0.06, +0.42]  rel kept  97.8%  active  26.0%
+  gate:exists + fallback       nDCG  73.59  vs ignore -11.39 [-12.73,-10.09]  rel kept  80.0%  active  67.2%
+  gate:coverage + fallback     nDCG  73.59  vs ignore -11.39 [-12.60,-10.15]  rel kept  80.0%  active  67.2%
+  gate:agreement + fallback    nDCG  73.59  vs ignore -11.39 [-12.62,-10.10]  rel kept  80.0%  active  67.2%
+  gate:safety + fallback       nDCG  73.59  vs ignore -11.39 [-12.74,-10.08]  rel kept  80.0%  active  67.2%
+  gate:safety, no fallback     nDCG  64.05  vs ignore -20.92 [-22.76,-19.25]  rel kept  68.7%  active  67.2%
+-- qwen3b_lora wands all queries (n=255)
+  ignore                       nDCG  75.78  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  14.00  vs ignore -61.78 [-66.36,-57.18]  rel kept  13.0%  active 100.0%
+  title fallback (all attrs)   nDCG  38.58  vs ignore -37.19 [-41.50,-32.84]  rel kept  39.9%  active 100.0%
+  fixed-order relaxation       nDCG  72.86  vs ignore  -2.91 [ -4.74, -1.37]  rel kept  89.0%  active  26.7%
+  gate:exists + fallback       nDCG  59.14  vs ignore -16.64 [-20.71,-13.14]  rel kept  57.7%  active  70.6%
+  gate:coverage + fallback     nDCG  68.66  vs ignore  -7.11 [ -9.70, -4.71]  rel kept  79.3%  active  41.2%
+  gate:agreement + fallback    nDCG  68.66  vs ignore  -7.11 [ -9.56, -4.80]  rel kept  79.3%  active  41.2%
+  gate:safety + fallback       nDCG  73.62  vs ignore  -2.15 [ -3.66, -0.89]  rel kept  91.0%  active  21.6%
+  gate:safety, no fallback     nDCG  69.67  vs ignore  -6.10 [ -8.68, -3.70]  rel kept  88.2%  active  21.6%
+
+== R-E ESCI queries that occur in QueryNER train (normalized text match)
+  qwen72: 66/678 evaluated queries overlap (318/3999 of all ESCI sample queries)
+-- qwen72 esci EXCLUDING QueryNER-train overlap (n=612)
+  ignore                       nDCG  83.25  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  19.62  vs ignore -63.63 [-66.54,-60.76]  rel kept  18.8%  active 100.0%
+  title fallback (all attrs)   nDCG  58.35  vs ignore -24.91 [-27.48,-22.23]  rel kept  52.5%  active 100.0%
+  fixed-order relaxation       nDCG  83.36  vs ignore  +0.10 [ -0.20, +0.38]  rel kept  97.0%  active  23.5%
+  gate:exists + fallback       nDCG  75.53  vs ignore  -7.72 [ -9.51, -6.10]  rel kept  83.8%  active  58.3%
+  gate:coverage + fallback     nDCG  75.53  vs ignore  -7.72 [ -9.50, -6.11]  rel kept  83.8%  active  58.3%
+  gate:agreement + fallback    nDCG  75.53  vs ignore  -7.72 [ -9.57, -6.08]  rel kept  83.8%  active  58.3%
+  gate:safety + fallback       nDCG  75.53  vs ignore  -7.72 [ -9.44, -5.95]  rel kept  83.8%  active  58.3%
+  gate:safety, no fallback     nDCG  68.95  vs ignore -14.30 [-16.69,-11.97]  rel kept  75.1%  active  58.3%
+  qwen3b_base: 63/709 evaluated queries overlap (318/3999 of all ESCI sample queries)
+-- qwen3b_base esci EXCLUDING QueryNER-train overlap (n=646)
+  ignore                       nDCG  84.63  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  20.17  vs ignore -64.47 [-67.34,-61.61]  rel kept  19.1%  active 100.0%
+  title fallback (all attrs)   nDCG  55.31  vs ignore -29.32 [-31.99,-26.66]  rel kept  49.9%  active 100.0%
+  fixed-order relaxation       nDCG  84.75  vs ignore  +0.12 [ -0.19, +0.46]  rel kept  97.3%  active  23.4%
+  gate:exists + fallback       nDCG  73.65  vs ignore -10.98 [-13.07, -9.06]  rel kept  79.4%  active  64.9%
+  gate:coverage + fallback     nDCG  73.65  vs ignore -10.98 [-12.98, -8.95]  rel kept  79.4%  active  64.9%
+  gate:agreement + fallback    nDCG  73.65  vs ignore -10.98 [-12.98, -8.92]  rel kept  79.4%  active  64.9%
+  gate:safety + fallback       nDCG  73.65  vs ignore -10.98 [-12.89, -8.91]  rel kept  79.4%  active  64.9%
+  gate:safety, no fallback     nDCG  63.55  vs ignore -21.08 [-23.85,-18.45]  rel kept  67.7%  active  64.9%
+  qwen3b_lora: 156/1699 evaluated queries overlap (318/3999 of all ESCI sample queries)
+-- qwen3b_lora esci EXCLUDING QueryNER-train overlap (n=1543)
+  ignore                       nDCG  84.98  vs ignore  +0.00 [ +0.00, +0.00]  rel kept 100.0%  active   0.0%
+  hard filter                  nDCG  31.33  vs ignore -53.65 [-55.81,-51.53]  rel kept  30.8%  active 100.0%
+  title fallback (all attrs)   nDCG  62.50  vs ignore -22.47 [-24.30,-20.69]  rel kept  59.6%  active 100.0%
+  fixed-order relaxation       nDCG  85.27  vs ignore  +0.29 [ +0.11, +0.46]  rel kept  98.0%  active  25.8%
+  gate:exists + fallback       nDCG  73.32  vs ignore -11.66 [-12.92,-10.39]  rel kept  79.7%  active  67.5%
+  gate:coverage + fallback     nDCG  73.32  vs ignore -11.66 [-13.06,-10.31]  rel kept  79.7%  active  67.5%
+  gate:agreement + fallback    nDCG  73.32  vs ignore -11.66 [-13.05,-10.34]  rel kept  79.7%  active  67.5%
+  gate:safety + fallback       nDCG  73.32  vs ignore -11.66 [-12.99,-10.35]  rel kept  79.7%  active  67.5%
+  gate:safety, no fallback     nDCG  63.83  vs ignore -21.15 [-22.92,-19.41]  rel kept  68.5%  active  67.5%
+  rule (safety>=0.5 vs kept>=0.5) without overlap: 35 / 38
+   qwen3b_base  esci brand     safety 0.71 kept 0.58 (all queries: 0.71/0.58)
+   qwen3b_base  esci color     safety 0.61 kept 0.49 (all queries: 0.61/0.50)
+   qwen3b_base  esci material  safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_base  esci pattern   safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_base  esci shape     safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_base  esci size      safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_base  esci style     safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_lora  esci brand     safety 0.74 kept 0.55 (all queries: 0.74/0.55)
+   qwen3b_lora  esci color     safety 0.68 kept 0.55 (all queries: 0.69/0.56)
+   qwen3b_lora  esci material  safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_lora  esci shape     safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen3b_lora  esci size      safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen72       esci brand     safety 0.80 kept 0.68 (all queries: 0.81/0.68)
+   qwen72       esci color     safety 0.66 kept 0.55 (all queries: 0.66/0.55)
+   qwen72       esci material  safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen72       esci pattern   safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen72       esci shape     safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen72       esci size      safety 0.00 kept 0.00 (all queries: 0.00/0.00)
+   qwen72       esci style     safety 0.00 kept 0.00 (all queries: 0.00/0.00)

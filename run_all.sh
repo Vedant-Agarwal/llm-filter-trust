@@ -17,6 +17,7 @@ for c in 0.4 0.6; do py src/depth.py ${X}qwen3b_lora.jsonl --cut $c > results/de
 py src/robust.py ${X}qwen3b_lora.jsonl > results/robust_qwen3b_lora.txt
 py src/safety_check.py ${X}qwen72.jsonl ${X}qwen3b_lora.jsonl ${X}qwen3b_base.jsonl > results/safety_check.txt
 py src/rules.py                       > results/rules.txt
+py src/reviews.py ${X}qwen72.jsonl ${X}qwen3b_base.jsonl ${X}qwen3b_lora.jsonl --queryner-train $ISIR_DATA/queryner_train.jsonl > results/reviews.txt
 py src/grid.py                        > results/grid.txt
 py src/table2.py                      > results/table2.txt
 py src/examples.py                    > results/examples.txt

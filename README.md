@@ -62,21 +62,22 @@ queryner_test.jsonl      50266654a43c74e0ee628d9b67cf7d0f65789434aef44942cc69fa2
 ./run_all.sh     # about 4 minutes on the machine above
 ```
 
-This writes `results/` and `figures/`, then runs `src/check_numbers.py`. That script lists every number in the paper with its line in the paper source, expected value, tolerance and PASS, FAIL or MISSING. `results/check_numbers.txt` holds the committed run. Bootstrap and sign-flip use fixed seeds in the code. `python src/check_numbers.py` alone needs only `results/`.
+This writes `results/` and `figures/`, then runs `src/check_numbers.py`. That script lists every number in the camera-ready paper (revision v11) with its line in the paper source, expected value, tolerance and PASS, FAIL or MISSING. `results/check_numbers.txt` holds the committed run. Bootstrap and sign-flip use fixed seeds in the code. `python src/check_numbers.py` alone needs only `results/`.
 
 ## Where each number comes from
 
 | Paper item | Command (in `run_all.sh`) | Output |
 |---|---|---|
 | Table I (extraction quality) | `src/table1.py` | `results/table1.txt`, `.json` |
-| Dataset counts, 8% overlap (316 of 4,000), attribute ratios | `src/stats.py` | `results/stats.txt`, `.json` |
+| Dataset counts, attribute ratios, exact-text QueryNER overlap (316 queries) | `src/stats.py` | `results/stats.txt`, `.json` |
 | Headline nDCG, CIs, p-values, title fallback, gating, oracle; Fig. 1 | `src/depth.py EXTRACT` | `results/depth_<extractor>.txt` |
 | Table IV loss avoided at cut-offs 0.4, 0.6 | `src/depth.py EXTRACT --cut C` | `results/depth_qwen3b_lora_cut<C>.txt` |
 | Loss causes by type; Fig. 2 | `src/loss_decomp.py EXTRACT` | `results/loss_<extractor>.txt` |
 | Table IV wording shares, lenient labels, lenient-out drops | `src/robust.py EXTRACT` | `results/robust_qwen3b_lora.txt` |
 | Table III (two decimals) | `src/safety_check.py EXTRACTS` | `results/safety_check.txt` |
-| 38 cells, Spearman (0.98, 0.90, 0.66, 0.82), rule counts 34/36/38 and lenient-out, Table III raw values, Fig. 3 | `src/rules.py` | `results/rules.txt`, `.json` |
+| 38 cells, Spearman (0.98, 0.91, 0.66, 0.82), rule counts 34/36/38 and lenient-out, Table III raw values, Fig. 3 | `src/rules.py` | `results/rules.txt`, `.json` |
 | 44-64 drop, 78-98% avoided, oracle 1.5 and 2.7, 16-20 and 13-31, relaxation, shared queries | `src/grid.py` | `results/grid.txt`, `.json` |
+| Camera-ready reviewer analyses: Table III query and pair counts, score ablation (field exists / coverage / consistency / product), held-out cut-off splits (0.56, 93%), Table V policies on identical queries, 8.0% QueryNER overlap (318 queries, normalized text) and results without it | `src/reviews.py EXTRACTS --queryner-train FILE` | `results/reviews.txt` |
 | Learned policy across retailers | `src/policy_exp.py EXTRACT --base hybrid` | `results/policy_<extractor>.txt` |
 | Table II and worked examples | `src/table2.py` | `results/table2.txt`, `.json` |
 | Other examples (random draw, seed 1) | `src/examples.py` | `results/examples.txt` |

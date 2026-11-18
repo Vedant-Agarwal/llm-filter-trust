@@ -15,7 +15,7 @@ line status  prov  expected     actual    tol  claim
   29 PASS    C         0.91     0.9063  0.005  Spearman where a field exists
   29 PASS    C           36       36.0      0  rule correct of 38
   29 PASS    C           38       38.0      0  cells
-  29 PASS    C           20       20.0      0  rule correct where a field exists
+ 121 PASS    C           20       20.0      0  rule correct where a field exists
   29 PASS    C           22       22.0      0  cells with a field
   29 PASS    C           78     77.945    0.5  gating + title, loss avoided, grid minimum
   29 PASS    C           98    97.6644    0.5  gating + title, loss avoided, grid maximum
@@ -42,8 +42,11 @@ line status  prov  expected     actual    tol  claim
   55 PASS    C         true       code      0  ESCI gains 1 / 0.1 / 0.01 / 0 in build_index.py
   55 PASS    C         true       code      0  WANDS gains 2 / 1 in build_index.py
   57 PASS    C         7841     7841.0      0  QueryNER train
-  57 PASS    C            8        7.9    0.5  training overlap share
-  57 PASS    C          316      316.0      0  overlap count (audit: 316)
+  57 PASS    C          8.0      7.952   0.05  training overlap share (normalized text match, reviews.py)
+  57 PASS    C         true  318 / 316      0  overlap: 318 normalized matches (stats.py exact match finds 316)
+  57 PASS    C        -54.1     -54.05   0.05  LoRA ESCI drop, all queries
+  57 PASS    C        -53.7     -53.65   0.05  LoRA ESCI drop, overlap excluded
+  57 PASS    C          0.3       0.27   0.05  gated result change, overlap excluded
   57 PASS    G         true       code      0  LoRA rank 16, 2 epochs in lora_train.py
   57 PASS    G         true       code      0  five samples, temperature 0.7 in extract.py
   61 PASS    C          993      993.0      0  QueryNER test queries
@@ -116,8 +119,8 @@ line status  prov  expected     actual    tol  claim
  121 PASS    C           17    16.5103    0.5  WANDS color kept, high
  121 PASS    C          4.0        4.0   0.05  lenient share ESCI
  121 PASS    C         22.3       22.3   0.05  lenient share WANDS
- 188 PASS    C            4        4.0    0.5  lenient share ESCI (rounded)
- 188 PASS    C           22       22.3    0.5  lenient share WANDS (rounded)
+ 207 PASS    C            4        4.0    0.5  lenient share ESCI (rounded)
+ 207 PASS    C           22       22.3    0.5  lenient share WANDS (rounded)
  123 PASS    C           34       34.0      0  rule correct at 0.4
  169 PASS    C           34       34.0      0  Table IV rule correct at 0.4
  123 PASS    C           36       36.0      0  rule correct at 0.5
@@ -125,7 +128,7 @@ line status  prov  expected     actual    tol  claim
  123 PASS    C           38       38.0      0  rule correct at 0.6
  169 PASS    C           38       38.0      0  Table IV rule correct at 0.6
  123 PASS    C          2.2        2.2   0.05  largest change in drop, lenient out
- 188 PASS    C          2.2        2.2   0.05  largest change in drop, lenient out
+ 207 PASS    C          2.2        2.2   0.05  largest change in drop, lenient out
  135 PASS    C         0.95     0.9534  0.005  Table III esci brand cover
  135 PASS    C         0.78     0.7755  0.005  Table III esci brand consist.
  135 PASS    C         0.74     0.7394  0.005  Table III esci brand safety
@@ -182,17 +185,106 @@ line status  prov  expected     actual    tol  claim
  183 PASS    C           94    93.7876    0.5  gating + title avoided WANDS, 72B
  183 PASS    C          2.2       2.15   0.05  gap to unfiltered, low
  183 PASS    C         11.4      11.39   0.05  gap to unfiltered, high
- 185 PASS    C         true       code      0  oracle searches subsets of up to four attributes in depth.py
- 185 PASS    C          0.9       0.92   0.05  oracle ESCI
- 185 PASS    C          0.7       0.74    0.3  oracle ESCI CI low
- 185 PASS    C          1.1       1.13    0.3  oracle ESCI CI high
- 185 PASS    C          0.4       0.35   0.05  oracle WANDS
- 185 PASS    C          0.1       0.09    0.3  oracle WANDS CI low
- 185 PASS    C          0.8       0.78    0.3  oracle WANDS CI high
- 185 PASS    C          1.0       0.96   0.05  oracle ESCI, 72B
- 185 PASS    C          1.5       1.49   0.05  oracle WANDS, 72B
- 185 PASS    C         true       0.09      0  learned policy, other retailer: no meaningful gain over ignoring (at most +0.5 in 6 runs)
- 188 PASS    C          123      123.0      0  WANDS slice, low
- 188 PASS    C          255      255.0      0  WANDS slice, high
+ 204 PASS    C         true       code      0  oracle searches subsets of up to four attributes in depth.py
+ 204 PASS    C          0.9       0.92   0.05  oracle ESCI
+ 204 PASS    C          0.7       0.74    0.3  oracle ESCI CI low
+ 204 PASS    C          1.1       1.13    0.3  oracle ESCI CI high
+ 204 PASS    C          0.4       0.35   0.05  oracle WANDS
+ 204 PASS    C          0.1       0.09    0.3  oracle WANDS CI low
+ 204 PASS    C          0.8       0.78    0.3  oracle WANDS CI high
+ 204 PASS    C          1.0       0.96   0.05  oracle ESCI, 72B
+ 204 PASS    C          1.5       1.49   0.05  oracle WANDS, 72B
+ 204 PASS    C         true       0.09      0  learned policy, other retailer: no meaningful gain over ignoring (at most +0.5 in 6 runs)
+ 207 PASS    C          123      123.0      0  WANDS slice, low
+ 207 PASS    C          255      255.0      0  WANDS slice, high
+  29 PASS    C           50    50.3839    0.5  supported cells keep, low
+  29 PASS    C           68    68.4963    0.5  supported cells keep, high
+  29 PASS    C         0.51     0.5062  0.005  WANDS color score (abstract)
+  29 PASS    C           16     16.087    0.5  WANDS color kept (abstract)
+  29 PASS    C           36       36.0      0  rule correct of 38 (abstract)
+  29 PASS    C         true       26.0      0  relaxation keeps a filter on about a quarter of ESCI queries
+ 119 PASS    C         true       code      0  consistency set to 0 below ten title matches (rules.py, safety_check.py, reviews.py)
+ 119 PASS    C         true      0.685      0  no cell keeps 80%
+ 119 PASS    C           68    68.4963    0.5  best cell keeps
+ 121 PASS    C            8        8.0      0  exists alone correct of 22
+ 121 PASS    C           14       14.0      0  exists false approvals
+ 121 PASS    C           15       15.0      0  coverage alone correct of 22
+ 121 PASS    C            7        7.0      0  coverage false approvals
+ 121 PASS    C           18       18.0      0  agreement alone correct of 22
+ 121 PASS    C            4        4.0      0  agreement false approvals
+ 121 PASS    C           20       20.0      0  safety alone correct of 22
+ 121 PASS    C            2        2.0      0  safety false approvals
+ 121 PASS    C         0.56       0.56  0.005  tuned cut-off mean
+ 121 PASS    C         0.45       0.45  0.005  tuned cut-off 2.5%
+ 121 PASS    C         0.65       0.65  0.005  tuned cut-off 97.5%
+ 121 PASS    C           93       93.0    0.5  held-out accuracy, tuned
+ 121 PASS    C           92       92.0    0.5  held-out accuracy, 0.5 fixed
+ 121 PASS    C           86       85.9    0.5  held-out accuracy, field cells, 0.5 fixed
+ 135 PASS    C          903      903.0      0  Table III esci brand queries
+ 135 PASS    C         9700     9700.0      0  Table III esci brand pairs
+ 136 PASS    C          265      265.0      0  Table III esci color queries
+ 136 PASS    C         3211     3211.0      0  Table III esci color pairs
+ 138 PASS    C           55       55.0      0  Table III wands material queries
+ 138 PASS    C         5771     5771.0      0  Table III wands material pairs
+ 139 PASS    C           57       57.0      0  Table III wands color queries
+ 139 PASS    C         7141     7141.0      0  Table III wands color pairs
+ 140 PASS    C           47       47.0      0  Table III wands shape queries
+ 140 PASS    C         5068     5068.0      0  Table III wands shape pairs
+ 141 PASS    C           45       45.0      0  Table III wands size queries
+ 141 PASS    C         3054     3054.0      0  Table III wands size pairs
+ 142 PASS    C           98       98.0      0  Table III wands brand queries
+ 142 PASS    C        13386    13386.0      0  Table III wands brand pairs
+ 137 PASS    C          186      186.0      0  Table III ESCI size/mat/shape queries, low
+ 137 PASS    C          379      379.0      0  Table III ESCI size/mat/shape queries, high
+ 137 PASS    C        10382    10382.0      0  Table III ESCI size/mat/shape pairs
+ 183 PASS    C         -2.2      -2.15   0.05  WANDS gate LoRA
+ 183 PASS    C         -3.2       -3.2   0.05  WANDS gate 72B
+ 183 PASS    C         -2.9      -2.91   0.05  WANDS relax LoRA
+ 183 PASS    C         -5.1      -5.07   0.05  WANDS relax 72B
+ 183 PASS    C        -12.8     -12.82   0.05  WANDS gate 3B prompted
+ 183 PASS    C         -5.0      -4.97   0.05  WANDS relax 3B prompted
+ 183 PASS    C         true         CI      0  gate and relaxation intervals overlap (LoRA, 72B on WANDS)
+ 183 PASS    C            5       4.96    0.5  coverage/consistency alone, extra cost LoRA
+ 183 PASS    C           13      13.18    0.5  coverage/consistency alone, extra cost 72B
+ 183 PASS    C         true (26.0, 67.2)      0  ESCI: relaxation active on a quarter, gating on two-thirds
+ 183 PASS    C         11.4      11.39   0.05  ESCI gate cost (text)
+ 194 PASS    C        -54.1     -54.05   0.05  Table V esci hard filter dnDCG
+ 194 PASS    C           30       30.4    0.5  Table V esci hard filter kept
+ 194 PASS    C          100      100.0    0.5  Table V esci hard filter active
+ 194 PASS    C        -61.8     -61.78   0.05  Table V wands hard filter dnDCG
+ 194 PASS    C           13       13.0    0.5  Table V wands hard filter kept
+ 194 PASS    C          100      100.0    0.5  Table V wands hard filter active
+ 195 PASS    C         +0.2       0.24   0.05  Table V esci fixed-order relaxation dnDCG
+ 195 PASS    C           98       97.8    0.5  Table V esci fixed-order relaxation kept
+ 195 PASS    C           26       26.0    0.5  Table V esci fixed-order relaxation active
+ 195 PASS    C         -2.9      -2.91   0.05  Table V wands fixed-order relaxation dnDCG
+ 195 PASS    C           89       89.0    0.5  Table V wands fixed-order relaxation kept
+ 195 PASS    C           27       26.7    0.5  Table V wands fixed-order relaxation active
+ 196 PASS    C        -11.4     -11.39   0.05  Table V esci gate:exists + fallback dnDCG
+ 196 PASS    C           80       80.0    0.5  Table V esci gate:exists + fallback kept
+ 196 PASS    C           67       67.2    0.5  Table V esci gate:exists + fallback active
+ 196 PASS    C        -16.6     -16.64   0.05  Table V wands gate:exists + fallback dnDCG
+ 196 PASS    C           58       57.7    0.5  Table V wands gate:exists + fallback kept
+ 196 PASS    C           71       70.6    0.5  Table V wands gate:exists + fallback active
+ 197 PASS    C        -11.4     -11.39   0.05  Table V esci gate:coverage + fallback dnDCG
+ 197 PASS    C           80       80.0    0.5  Table V esci gate:coverage + fallback kept
+ 197 PASS    C           67       67.2    0.5  Table V esci gate:coverage + fallback active
+ 197 PASS    C         -7.1      -7.11   0.05  Table V wands gate:coverage + fallback dnDCG
+ 197 PASS    C           79       79.3    0.5  Table V wands gate:coverage + fallback kept
+ 197 PASS    C           41       41.2    0.5  Table V wands gate:coverage + fallback active
+ 198 PASS    C        -11.4     -11.39   0.05  Table V esci gate:agreement + fallback dnDCG
+ 198 PASS    C           80       80.0    0.5  Table V esci gate:agreement + fallback kept
+ 198 PASS    C           67       67.2    0.5  Table V esci gate:agreement + fallback active
+ 198 PASS    C         -7.1      -7.11   0.05  Table V wands gate:agreement + fallback dnDCG
+ 198 PASS    C           79       79.3    0.5  Table V wands gate:agreement + fallback kept
+ 198 PASS    C           41       41.2    0.5  Table V wands gate:agreement + fallback active
+ 199 PASS    C        -11.4     -11.39   0.05  Table V esci gate:safety + fallback dnDCG
+ 199 PASS    C           80       80.0    0.5  Table V esci gate:safety + fallback kept
+ 199 PASS    C           67       67.2    0.5  Table V esci gate:safety + fallback active
+ 199 PASS    C         -2.2      -2.15   0.05  Table V wands gate:safety + fallback dnDCG
+ 199 PASS    C           91       91.0    0.5  Table V wands gate:safety + fallback kept
+ 199 PASS    C           22       21.6    0.5  Table V wands gate:safety + fallback active
+ 191 PASS    C         1699     1699.0      0  Table V ESCI n
+ 191 PASS    C          255      255.0      0  Table V WANDS n
 
-TOTAL 195: PASS 195  FAIL 0  MISSING 0
+TOTAL 287: PASS 287  FAIL 0  MISSING 0
