@@ -15,7 +15,7 @@ Every paper number depends on the saved extractions. Rows marked `G` in `results
 
 ## Setup
 
-Python 3.12. Tested on macOS arm64 (Apple M4 Pro, 12 cores, 24 GB) with no GPU.
+Python 3.12. Tested on macOS arm64 (Mac mini, Apple M4 Pro, 12 cores, 24 GB) with no GPU.
 
 ```bash
 uv venv --python 3.12 .venv && source .venv/bin/activate
@@ -29,6 +29,16 @@ export ISIR_DATA=$PWD/data      # candidates and prepared query files
 export ISIR_WANDS=$PWD/WANDS    # clone of the WANDS repository
 mkdir -p "$ISIR_DATA"
 ```
+
+## Compute and resources
+
+All computation for this paper ran on resources owned or paid for personally by the first author:
+
+- **CPU** (data preparation, indexing, all analysis, tables and figures): the first author's personally owned Mac mini (Apple M4 Pro, 24 GB).
+- **GPU** (extraction with three models and LoRA training): one NVIDIA A100 80GB rented on RunPod through the first author's personal account. The original run took about 43 minutes (`provenance/gpu_timing.txt`); the separate re-run on 2026-11-02 took about 36 minutes.
+- **Data and models:** only public datasets (ESCI, WANDS, QueryNER) and public open-weight models (see Licenses).
+
+No employer hardware, cloud accounts, data, code or paid services were used.
 
 ## Data
 
